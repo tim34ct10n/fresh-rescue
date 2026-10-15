@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fresh Rescue</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Fresh Rescue: condition monitoring and automated staged markdowns that help supermarkets rescue fresh produce before it becomes waste.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23FF8A2B'/%3E%3Cpath d='M42 70C42 46 54 32 72 30C72 54 60 68 42 70Z' fill='%232F8F4E'/%3E%3Cpath d='M44 68C42 56 34 48 22 48C23 60 32 68 44 68Z' fill='%231F6B39'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: retailer-facing pitch page — green header, a hero that shows the shopper-facing card your store would publish, then problem, mechanism, price ladder, hardware, pilot pricing, demo and FAQ. */
+:root{
+  --leaf:#B4471A;
+  --leaf-deep:#7E2F10;
+  --leaf-soft:#FBE6D9;
+  --sand:#F3E7D3;
+  --tangerine:#FF8A2B;
+  --tangerine-soft:#FFE3CC;
+  --tangerine-mid:#FFB57A;
+  --sun:#FFD447;
+  --cream:#FFF8EC;
+  --paper:#FFFFFF;
+  --ink:#1E2421;
+  --ink-soft:#4A524D;
+  --grey:#B9B4AA;
+  --grey-soft:#EFEBE3;
+  --line:#E8E1D3;
+  --display:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body:'Figtree', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --radius:18px;
+  --max:1120px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:-0.02em}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf-deep)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s ease, background .15s ease}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn-primary{background:var(--leaf);color:#FFFFFF}
+.btn-primary:hover{background:var(--leaf-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-ghost:hover{background:var(--paper)}
+.btn-small{min-height:44px;padding:0 18px;font-size:15px}
+
+/* Header */
+.site-head{position:sticky;top:env(safe-area-inset-top, 0px);z-index:10;background:var(--leaf-deep);box-shadow:0 2px 12px -4px rgba(30,36,33,.35)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:6px}
+.site-head .btn-primary{background:var(--sun);color:var(--ink)}
+.site-head .btn-primary:hover{background:#FFFFFF}
+.site-head a:focus-visible{outline-color:#FFFFFF}
+.logo{display:flex;align-items:center;text-decoration:none;flex:0 0 auto}
+.logo svg{display:block;width:88px;height:66px}
+.logo svg text{font-family:var(--display);font-weight:800}
+@media (max-width:420px){.logo svg{width:76px;height:57px}}
+.nav{display:flex;align-items:center;gap:24px}
+.nav a.navlink{text-decoration:none;font-weight:600;font-size:15px;color:#FBE6D9}
+.nav a.navlink:hover{color:#FFFFFF;text-decoration:underline;text-underline-offset:4px}
+@media (max-width:820px){.nav a.navlink{display:none}}
+
+/* Hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center;padding-block:64px 72px}
+.hero h1{font-size:clamp(42px, 6.4vw, 78px);font-weight:800}
+.hero h1 .line2{display:block;color:var(--leaf)}
+.hero-sub{font-size:clamp(18px,2.1vw,21px);color:var(--ink-soft);max-width:31em;margin-top:22px}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:32px}
+.sticker{display:inline-block;background:var(--sun);color:var(--ink);font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;border-radius:999px;transform:rotate(-3deg);margin-bottom:22px}
+@media (max-width:880px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:40px 56px}}
+
+/* Rescue card (example) */
+.card-stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px}
+.example-tag{position:absolute;top:-14px;right:8px;z-index:2;background:var(--ink);color:#FFFFFF;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.card-caption{font-size:14px;color:var(--ink-soft);text-align:center;max-width:340px}
+.rcard{width:100%;max-width:360px;background:var(--paper);border-radius:22px;box-shadow:0 24px 48px -24px rgba(30,36,33,.35), 0 0 0 1px var(--line);overflow:hidden;transform:rotate(1.5deg)}
+.rcard-img{position:relative;height:170px;background:#C8352E;overflow:hidden}
+.rcard-img svg{position:absolute;inset:0;width:100%;height:100%}
+.status{position:absolute;top:14px;left:14px;background:var(--tangerine);color:var(--ink);border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.rcard-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:14px}
+.rcard-title{font-weight:700;font-size:18px}
+.rcard-loc{font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:5px;margin-top:2px}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.metric-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.metric-val{font-family:var(--display);font-weight:800;font-size:24px;font-variant-numeric:tabular-nums;margin-top:2px}
+.metric-val small{font-family:var(--body);font-size:13px;font-weight:600;color:var(--ink-soft)}
+.price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price-now{font-family:var(--display);font-weight:800;font-size:32px;color:var(--ink)}
+.price-was{color:var(--ink-soft);text-decoration:line-through;font-size:16px}
+.price-off{background:var(--tangerine);color:var(--ink);font-weight:800;font-size:12px;padding:4px 8px;border-radius:6px;letter-spacing:.04em}
+.fake-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:999px;background:var(--leaf);color:#FFFFFF;font-weight:700}
+
+/* Bands */
+section{scroll-margin-top:80px}
+.band{padding-block:80px}
+.band-head{display:flex;flex-direction:column;gap:12px;max-width:680px;margin-bottom:40px}
+.band-head h2{font-size:clamp(32px,4.6vw,48px);font-weight:800}
+.band-head p{color:var(--ink-soft);font-size:18px}
+@media (max-width:600px){.band{padding-block:56px}}
+
+/* Problem */
+.why{background:var(--leaf);color:#FFFFFF}
+.why .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start;padding-block:72px}
+.why h2{font-size:clamp(34px,4.8vw,52px);font-weight:800}
+.why .eyebrow{color:var(--sun);margin-bottom:14px}
+.pains{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.pains li{display:flex;gap:14px;align-items:flex-start}
+.pains b{display:block;font-size:19px;margin-bottom:2px}
+.pains span.txt{color:#FBE6D9;font-size:17px}
+.pain-ico{flex:0 0 36px;height:36px;border-radius:50%;background:rgba(255,255,255,.16);display:grid;place-items:center}
+@media (max-width:800px){.why .wrap{grid-template-columns:minmax(0,1fr);gap:24px;padding-block:56px}}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;list-style:none;margin:0;padding:0}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:12px}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:20px}
+.step h3{font-size:21px;font-weight:800}
+.step p{color:var(--ink-soft);font-size:16px}
+@media (max-width:980px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* Price ladder */
+.ladder-band{background:var(--paper);border-block:1px solid var(--line)}
+.ladder{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.rung{border-radius:var(--radius);padding:22px 18px;display:flex;flex-direction:column;gap:8px;min-height:190px}
+.rung-tag{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.rung-big{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.4vw,42px);line-height:1}
+.rung-q{font-size:14px;font-variant-numeric:tabular-nums;margin-top:auto}
+.rung p{font-size:15px}
+.r0{background:var(--sand);color:var(--ink)}
+.r1{background:var(--tangerine-soft);color:var(--ink)}
+.r2{background:var(--tangerine-mid);color:var(--ink)}
+.r3{background:var(--tangerine);color:var(--ink);box-shadow:inset 0 0 0 3px var(--sun)}
+.r4{background:var(--grey-soft);color:var(--ink-soft)}
+.r4 .rung-big{color:var(--ink-soft)}
+.ladder-arrow{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:14px;color:var(--ink-soft)}
+.ladder-arrow span.bar{flex:1;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--sun),var(--tangerine) 50%,var(--leaf) 75%,var(--grey))}
+@media (max-width:900px){.ladder{grid-template-columns:repeat(2,minmax(0,1fr))}.rung{min-height:0}.r0{grid-column:1 / -1}}
+@media (max-width:420px){.ladder{grid-template-columns:minmax(0,1fr)}}
+
+/* Hardware */
+.kit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.device{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:8px}
+.device-ico{width:52px;height:52px;border-radius:14px;background:var(--leaf-soft);display:grid;place-items:center;margin-bottom:6px}
+.device h3{font-size:20px;font-weight:800}
+.device .model{font-size:14px;font-weight:600;color:var(--leaf-deep)}
+.device p{color:var(--ink-soft);font-size:15px}
+.kit-note{margin-top:20px;font-size:15px;color:var(--ink-soft)}
+@media (max-width:900px){.kit{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.kit{grid-template-columns:minmax(0,1fr)}}
+
+/* Benefits */
+.benefits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0}
+.benefits li{display:flex;align-items:flex-start;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.benefits b{display:block;font-size:18px}
+.benefits span.txt{color:var(--ink-soft);font-size:16px}
+.tick{flex:0 0 32px;height:32px;border-radius:50%;background:var(--leaf);display:grid;place-items:center;margin-top:2px}
+@media (max-width:640px){.benefits{grid-template-columns:minmax(0,1fr)}}
+
+/* Pricing */
+.pricing-band{background:#2B1A12;color:#FFFFFF}
+.pricing-band .eyebrow{color:var(--sun)}
+.pricing-band .band-head p{color:#E6D6CB}
+.price-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.plan{background:#FFFFFF;color:var(--ink);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px}
+.plan-name{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf-deep)}
+.plan-lines{display:flex;flex-direction:column;gap:10px}
+.plan-line{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.plan-line span{font-size:17px}
+.plan-line strong{font-family:var(--display);font-weight:800;font-size:30px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.plan-total{display:flex;justify-content:space-between;align-items:baseline;gap:16px;background:var(--sun);border-radius:14px;padding:14px 16px}
+.plan-total span{font-weight:700;font-size:18px}
+.plan-total strong{font-family:var(--display);font-weight:800;font-size:34px;font-variant-numeric:tabular-nums}
+.plan-fine{font-size:14px;color:var(--ink-soft)}
+.includes{background:#45291B;border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:14px}
+.includes h3{font-size:22px;font-weight:800}
+.includes ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.includes li{display:flex;gap:12px;align-items:flex-start;color:#F3E7DD}
+.includes .tick{background:var(--sun)}
+@media (max-width:820px){.price-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Demo */
+.demo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.demo-points{list-style:none;margin:18px 0 26px;padding:0;display:flex;flex-direction:column;gap:10px}
+.demo-points li{display:flex;gap:10px;align-items:baseline;color:var(--ink-soft)}
+.demo-points li::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:var(--tangerine);transform:translateY(-1px)}
+.result{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;gap:14px}
+.result-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-radius:12px}
+.result-row b{font-size:17px}
+.result-row span{font-size:14px;color:var(--ink-soft)}
+.pill{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.pill-rescue{background:var(--tangerine);color:var(--ink)}
+.pill-off{background:var(--grey-soft);color:var(--ink-soft)}
+.result-cap{font-size:13px;color:var(--ink-soft)}
+@media (max-width:820px){.demo{grid-template-columns:minmax(0,1fr)}}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:12px;max-width:820px}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:0 20px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;font-weight:700;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{flex:0 0 28px;height:28px;border-radius:50%;background:var(--leaf-soft);display:grid;place-items:center;transition:transform .2s ease}
+.faq details[open] summary .plus{transform:rotate(45deg)}
+.faq details p{padding-bottom:18px;color:var(--ink-soft);max-width:62ch}
+
+/* Final CTA */
+.final{background:var(--tangerine);color:var(--ink)}
+.final .wrap{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding-block:72px}
+.final h2{font-size:clamp(36px,5.6vw,64px);font-weight:800;max-width:16em}
+.final p{font-size:18px;max-width:40em}
+.final .btn-primary{background:var(--ink)}
+.final .btn-primary:hover{background:#000000}
+.team{font-size:16px;font-weight:600}
+
+/* Footer */
+.site-foot{background:#2B1A12;color:#E6D6CB;font-size:14px}
+.site-foot .wrap{display:flex;flex-direction:column;gap:14px;padding-block:36px}
+.site-foot .logo svg{width:110px;height:83px}
+.site-foot p{max-width:76ch;line-height:1.6}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Fresh Rescue home">
+      <svg viewBox="0 0 200 150" aria-hidden="true">
+        <g transform="rotate(-6 100 75)">
+          <ellipse cx="100" cy="75" rx="96" ry="70" fill="#FF8A2B"/>
+          <ellipse cx="100" cy="75" rx="86" ry="60" fill="none" stroke="#1E2421" stroke-width="3"/>
+          <path d="M100 38 C100 28 108 22 118 22 C118 32 110 38 100 38 Z" fill="#2F8F4E"/>
+          <path d="M100 38 C99 30 92 25 84 26 C85 34 92 39 100 38 Z" fill="#2F8F4E"/>
+          <text x="100" y="84" text-anchor="middle" font-size="40" fill="#1E2421" letter-spacing="-1">FRESH</text>
+          <text x="100" y="113" text-anchor="middle" font-size="24" fill="#1E2421" letter-spacing="4">RESCUE</text>
+        </g>
+      </svg>
+    </a>
+    <nav class="nav" aria-label="Page sections">
+      <a class="navlink" href="#how">How it works</a>
+      <a class="navlink" href="#hardware">Hardware</a>
+      <a class="navlink" href="#pricing">Pilot pricing</a>
+      <a class="navlink" href="#faq">FAQ</a>
+      <a class="btn btn-primary btn-small" href="https://wandering-fresh-rescue-now.base44.app" target="_blank" rel="noopener">See the live demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="sticker">For supermarket owners and produce managers</span>
+        <h1>Rescue produce<span class="line2">before it becomes waste.</span></h1>
+        <p class="hero-sub">Fresh Rescue monitors the condition of each produce batch and applies staged markdowns automatically, so you discount the right batch at the right time, recover sales and give shoppers cheaper produce.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#pricing">
+            See pilot pricing
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="https://wandering-fresh-rescue-now.base44.app" target="_blank" rel="noopener">See the live demo</a>
+        </div>
+      </div>
+
+      <div class="card-stage">
+        <span class="example-tag">Example</span>
+        <article class="rcard" aria-label="Example rescue offer as your shoppers would see it">
+          <div class="rcard-img">
+            <svg viewBox="0 0 360 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="360" height="170" fill="#B92D27"/>
+              <g>
+                <circle cx="40" cy="40" r="34" fill="#D9443A"/><circle cx="115" cy="25" r="32" fill="#C9372F"/><circle cx="190" cy="50" r="36" fill="#E0503F"/><circle cx="270" cy="28" r="33" fill="#CF3D33"/><circle cx="340" cy="55" r="35" fill="#D9443A"/>
+                <circle cx="70" cy="110" r="36" fill="#E0503F"/><circle cx="150" cy="120" r="34" fill="#CF3D33"/><circle cx="230" cy="125" r="37" fill="#D9443A"/><circle cx="310" cy="120" r="34" fill="#C9372F"/><circle cx="10" cy="150" r="30" fill="#CF3D33"/>
+                <circle cx="110" cy="170" r="30" fill="#D9443A"/><circle cx="270" cy="175" r="32" fill="#E0503F"/>
+              </g>
+              <g fill="#FFFFFF" opacity=".28">
+                <ellipse cx="28" cy="28" rx="9" ry="5"/><ellipse cx="103" cy="14" rx="8" ry="5"/><ellipse cx="177" cy="37" rx="10" ry="6"/><ellipse cx="258" cy="16" rx="9" ry="5"/><ellipse cx="57" cy="97" rx="10" ry="6"/><ellipse cx="138" cy="108" rx="9" ry="5"/><ellipse cx="217" cy="112" rx="10" ry="6"/><ellipse cx="298" cy="108" rx="9" ry="5"/>
+              </g>
+            </svg>
+            <span class="status">Live rescue</span>
+          </div>
+          <div class="rcard-body">
+            <div>
+              <div class="rcard-title">Royal Gala Apples · Batch A01</div>
+              <div class="rcard-loc">
+                <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                Fresh Rescue Basket 1 · Your store
+              </div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><div class="metric-label">Consumer quality</div><div class="metric-val">49<small>/100</small></div></div>
+              <div class="metric"><div class="metric-label">Shelf life left</div><div class="metric-val">5h 02m</div></div>
+            </div>
+            <div class="price-row">
+              <span class="price-now">$5.20</span><span class="price-was">$8.00</span><span class="price-off">35% OFF</span>
+            </div>
+            <div class="fake-btn" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              Rescue this
+            </div>
+          </div>
+        </article>
+        <p class="card-caption">What your shoppers see when a batch enters its rescue window. Taken from our working prototype.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" aria-labelledby="why-h">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">The problem</div>
+        <h2 id="why-h">Produce doesn’t spoil on a schedule. Markdowns usually do.</h2>
+      </div>
+      <ul class="pains">
+        <li>
+          <span class="pain-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span><b>Visual checks miss early decline</b><span class="txt">Fresh produce deteriorates at different rates, even within one category, and staff can’t track every batch by eye.</span></span>
+        </li>
+        <li>
+          <span class="pain-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="8" cy="8" r="1.6"/></svg></span>
+          <span><b>Unnecessary markdowns</b><span class="txt">Whole batches get discounted when only part of the stock needs it, which costs margin.</span></span>
+        </li>
+        <li>
+          <span class="pain-ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9 2h6"/></svg></span>
+          <span><b>Missed sales windows</b><span class="txt">Deteriorating stock is often spotted too late to sell, so it ends up donated or thrown away.</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="eyebrow">How it works</div>
+        <h2 id="how-h">From the produce bay to a live rescue offer, automatically</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>Monitor each bay</h3>
+          <p>A sensor kit in each produce bay tracks temperature, humidity, ethylene (a ripening gas) and visual condition.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Score every batch</h3>
+          <p>A quality model turns the readings into a 0–100 quality score and an estimate of remaining quality life.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Mark down in stages</h3>
+          <p>As quality drops, the batch moves through 20%, 35% and 50% off. Low-quality stock is withdrawn for staff review.</p>
+        </li>
+        <li class="step">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>Shoppers rescue it</h3>
+          <p>Offers appear in a Fresh Rescue section on your store’s website, with the quality score and rescue price.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band ladder-band" id="discounts" aria-labelledby="disc-h">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="eyebrow">The markdown policy</div>
+        <h2 id="disc-h">Discount only what needs it, only when it needs it</h2>
+        <p>Each batch has its own quality score, so two batches of the same product can sit at different prices.</p>
+      </div>
+      <ol class="ladder">
+        <li class="rung r0">
+          <span class="rung-tag">Monitoring</span>
+          <span class="rung-big">Full price</span>
+          <p>No rescue offer yet.</p>
+          <span class="rung-q">Quality above 75</span>
+        </li>
+        <li class="rung r1">
+          <span class="rung-tag">Live rescue</span>
+          <span class="rung-big">20% off</span>
+          <span class="rung-q">Quality 61–75</span>
+        </li>
+        <li class="rung r2">
+          <span class="rung-tag">Live rescue</span>
+          <span class="rung-big">35% off</span>
+          <span class="rung-q">Quality 46–60</span>
+        </li>
+        <li class="rung r3">
+          <span class="rung-tag">Live rescue</span>
+          <span class="rung-big">50% off</span>
+          <span class="rung-q">Quality 41–45</span>
+        </li>
+        <li class="rung r4">
+          <span class="rung-tag">Withdrawn</span>
+          <span class="rung-big">Staff review</span>
+          <p>Shown to shoppers as “No longer available”.</p>
+          <span class="rung-q">Quality 40 and below</span>
+        </li>
+      </ol>
+      <div class="ladder-arrow" aria-hidden="true"><span>Fresh</span><span class="bar"></span><span>Withdrawn</span></div>
+    </div>
+  </section>
+
+  <section class="band" id="hardware" aria-labelledby="hw-h">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="eyebrow">The hardware</div>
+        <h2 id="hw-h">One compact sensor suite per produce bay</h2>
+        <p>Off-the-shelf components keep the kit affordable for a single store.</p>
+      </div>
+      <div class="kit">
+        <div class="device">
+          <span class="device-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg></span>
+          <h3>Temperature and humidity</h3>
+          <span class="model">Sensirion SHT31-D</span>
+          <p>Tracks the storage microclimate of the bay.</p>
+        </div>
+        <div class="device">
+          <span class="device-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14c2-1 3 1 5 0s3-1 5 0 3 1 5 0"/><path d="M4 9c2-1 3 1 5 0s3-1 5 0 3 1 5 0"/><path d="M4 19c2-1 3 1 5 0s3-1 5 0 3 1 5 0"/></svg></span>
+          <h3>Ethylene gas (C₂H₄)</h3>
+          <span class="model">SPEC DGS2-C2H4 · 0–40 ppm</span>
+          <p>A ripening indicator for the produce in the bay.</p>
+        </div>
+        <div class="device">
+          <span class="device-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4Z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+          <h3>Camera</h3>
+          <span class="model">Pi Camera Module 3 · 12 MP</span>
+          <p>Captures images for visual colour and defect analysis.</p>
+        </div>
+        <div class="device">
+          <span class="device-ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 1v4M15 1v4M9 19v4M15 19v4M1 9h4M1 15h4M19 9h4M19 15h4"/></svg></span>
+          <h3>Controller</h3>
+          <span class="model">Raspberry Pi 4</span>
+          <p>Runs the bay and sends readings over a wireless link.</p>
+        </div>
+      </div>
+      <p class="kit-note">Supplier-priced parts come to about $520 per monitored bay (NZD, excl. GST).</p>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:0" aria-labelledby="ben-h">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="eyebrow">What your store gains</div>
+        <h2 id="ben-h">Built to protect margin and cut waste</h2>
+      </div>
+      <ul class="benefits">
+        <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span><b>Act earlier on at-risk batches</b><span class="txt">Condition data flags declining produce before it’s obvious on the shelf.</span></span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span><b>Mark down only what needs it</b><span class="txt">Batch-level scores avoid discounting stock that’s still at full quality.</span></span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span><b>Recover sales from stock you’d bin</b><span class="txt">Staged offers give shoppers a reason to buy before the sales window closes.</span></span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span><b>Less manual checking</b><span class="txt">Markdowns update automatically, and staff only step in for withdrawn batches.</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band pricing-band" id="pricing" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="eyebrow">Pilot pricing</div>
+        <h2 id="price-h">Start with a 2-bay pilot in your store</h2>
+        <p>Trial Fresh Rescue on two produce bays, such as apples and bananas, and measure the results before you scale.</p>
+      </div>
+      <div class="price-grid">
+        <div class="plan">
+          <span class="plan-name">2-bay pilot · year one</span>
+          <div class="plan-lines">
+            <div class="plan-line"><span>One-time store setup</span><strong>$5,100</strong></div>
+            <div class="plan-line"><span>Commission on Fresh Rescue sales</span><strong>10%</strong></div>
+          </div>
+          <div class="plan-total"><span>No monthly fee. We only earn when you recover sales.</span></div>
+          <p class="plan-fine">NZD, excluding GST. Setup covers equipment and installation for 2 bays. The 10% commission applies to sales made through Fresh Rescue and covers cloud hosting and support. Proposed pilot pricing; final pricing is confirmed after the pilot.</p>
+        </div>
+        <div class="includes">
+          <h3>What’s included</h3>
+          <ul>
+            <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2421" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Sensor kit for 2 independent produce bays</li>
+            <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2421" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Installation and configuration in your store</li>
+            <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2421" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Quality model and automated staged markdowns</li>
+            <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2421" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>A Fresh Rescue section for your store’s website</li>
+            <li><span class="tick" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E2421" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span>Cloud hosting, monitoring and ongoing support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="demo" aria-labelledby="demo-h">
+    <div class="wrap demo">
+      <div>
+        <div class="eyebrow">See it working</div>
+        <h2 id="demo-h" style="font-size:clamp(32px,4.6vw,48px);font-weight:800;margin-top:12px">Try our live prototype</h2>
+        <ul class="demo-points">
+          <li>Simulated sensor data streams through our quality model</li>
+          <li>Product cards update automatically, with no manual edits</li>
+          <li>Each batch gets its own decision, so not everything is discounted</li>
+        </ul>
+        <a class="btn btn-primary" href="https://wandering-fresh-rescue-now.base44.app" target="_blank" rel="noopener">
+          Open the live demo
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="result" aria-label="Example result from the prototype">
+        <div class="result-row" style="background:var(--tangerine-soft)">
+          <div><b>Royal Gala Apples · A01</b><br><span>Quality 49/100</span></div>
+          <span class="pill pill-rescue">35% rescue</span>
+        </div>
+        <div class="result-row" style="background:var(--grey-soft)">
+          <div><b>Cavendish Bananas · B01</b><br><span>Quality 29/100</span></div>
+          <span class="pill pill-off">No longer available</span>
+        </div>
+        <p class="result-cap">A real result from our prototype: two batches, two different decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="faq" style="padding-top:0" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="band-head">
+        <div class="eyebrow">FAQ</div>
+        <h2 id="faq-h">Questions from store managers</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Does Fresh Rescue replace our food-safety checks?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>No. The quality score is a quality estimate, not a use-by date or a food-safety assessment. Your store’s normal food-safety controls always apply, and low-quality batches are withdrawn for staff review.</p>
+        </details>
+        <details>
+          <summary>What do my staff need to do?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Very little day to day. Markdowns update automatically. Staff review batches that are withdrawn and decide what happens to them, for example donating them to a food rescue charity.</p>
+        </details>
+        <details>
+          <summary>Do shoppers need to download an app?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>No. Rescue offers appear in a Fresh Rescue section on your store’s website, so shoppers can browse them on any phone or computer.</p>
+        </details>
+        <details>
+          <summary>Which produce does it cover?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>The pilot starts with two bays. Our prototype uses Royal Gala apples and Cavendish bananas. More categories are added after the pilot.</p>
+        </details>
+        <details>
+          <summary>Is the system proven?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7E2F10" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+          <p>Not yet in a store. Our working prototype uses simulated sensor data. The pilot is where we calibrate the model with real produce and measure the effect on waste and sales.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="final-h">
+    <div class="wrap">
+      <h2 id="final-h">Ready to trial Fresh Rescue in your store?</h2>
+      <p>We’re looking for independent supermarkets in Auckland to run our first 2-bay pilot.</p>
+      <a class="btn btn-primary" href="https://wandering-fresh-rescue-now.base44.app" target="_blank" rel="noopener">
+        See the live demo
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <span class="team">The Fresh Rescue team: Jaspreet Singh, Madhav Harilal Pillai and Muhammed Hammaam Berakdar</span>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span class="logo" role="img" aria-label="Fresh Rescue">
+      <svg viewBox="0 0 200 150" aria-hidden="true">
+        <g transform="rotate(-6 100 75)">
+          <ellipse cx="100" cy="75" rx="96" ry="70" fill="#FF8A2B"/>
+          <ellipse cx="100" cy="75" rx="86" ry="60" fill="none" stroke="#1E2421" stroke-width="3"/>
+          <path d="M100 38 C100 28 108 22 118 22 C118 32 110 38 100 38 Z" fill="#2F8F4E"/>
+          <path d="M100 38 C99 30 92 25 84 26 C85 34 92 39 100 38 Z" fill="#2F8F4E"/>
+          <text x="100" y="84" text-anchor="middle" font-size="40" fill="#1E2421" letter-spacing="-1">FRESH</text>
+          <text x="100" y="113" text-anchor="middle" font-size="24" fill="#1E2421" letter-spacing="4">RESCUE</text>
+        </g>
+      </svg>
+    </span>
+    <p>Fresh Rescue is a student innovation prototype (ENGE803). The prototype uses simulated sensor data; quality scores and shelf-life figures are uncalibrated demonstration estimates, not food-safety or use-by claims. Pricing is a proposed pilot scenario in NZD, excluding GST.</p>
+  </div>
+</footer>
+</body>
+</html>
